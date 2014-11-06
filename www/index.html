@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="js/mobile-init.jquery.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<title>Hello World</title>
+	</head>
+
+	<body>
+		<div class="app">
+
+			<h1>NFC Reader</h1>
+			<div id="deviceready" class="blink">
+				<p class="event listening">Connecting to Device</p>
+				<p class="event received">Device is Ready</p>
+			</div>
+
+			<div id="landmark-1" data-landmark-id="1">
+				<form>
+					<label for="email">
+						<b>Email</b>
+						<input type="email" id="email" name="email">
+					</label>
+					<label for="comment">
+						<b>Comment</b>
+							<textarea id="comment" name="comment" cols="30" rows="10"></textarea>
+					</label>
+					<input type="submit" value="Save">
+				</form>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			// $(document).on('click', function() { 
+			// 	alert("mdr ta clické");
+			// });
+
+			$(document).ready(function() {
+				$('form').submit(function() {
+
+					alert('here');
+					var landmarkID = $(this).parent().attr('data-landmark-id');
+					var postData = $(this).serialize();
+					$.ajax({
+						type: 'POST',
+						url: 'http://192.168.1.17/~kafei/lol/index.php',
+						dataType: 'json',
+						contentType: 'application/json; charset=utf-8',
+						crossDomain: true,
+						cache: false,
+						data: '{ "Username":"test", "Password": "test" }',
+						// data: postData+'&amp;lid='+landmarkID,
+						success: function(data) {
+							console.log(data);
+							alert('Your comment was successfully added');
+						},
+						error: function() {
+							console.log(data);
+							alert('There was an error adding your comment');
+						}
+					});
+					alert('re here');
+					return false;
+				});
+			});
+		</script>
+	</body>
+</html>

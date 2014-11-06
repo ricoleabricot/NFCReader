@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.NFCReader" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="NfcPlugin">
+        <param name="android-package" value="com.chariotsolutions.nfc.plugin.NfcPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>NFCReader</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="pierrick.gicquelais@noparking.net" href="http://github.com/Kafei59/">
+        No Parking Developper Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="127.0.0.1/*" subdomains="true" />
+    <log level="DEBUG" />
+</widget>
